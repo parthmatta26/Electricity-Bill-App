@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Electricity Bill | Home</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <h1>Welcome to the Electricity Bill Portal</h1>
+  <a class="h2" th:href="@{/customer/login}">Login </a> <br>
+  <a class="h2" th:href="@{/customer/new}"> Add New Customer</a>
+  <br><br>
+  <div th:if="${message1}" class="alert alert-success text-center">[[${message1}]]</div>
+  <div th:if="${message2}" class="alert alert-danger text-center">[[${message2}]]</div>
+  <img src="https://img.freepik.com/free-vector/power-generation-orthogonal-illustration_1284-40074.jpg?w=2000"
+       alt="Electricity" style="width:700px;height:480px;">
+</div>
+</body>
+</html>

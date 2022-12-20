@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${pageTitle}]]</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div class="text-center m-2"><h2>[[${pageHeading}]]</h2></div>
+  <div class="m-3"><a class="h3" th:href="@{'/customer/portal/' + ${id}}">Generate New Bill</a></div>
+  <div th:if="${message1}" class="alert alert-success text-center">[[${message1}]]</div>
+  <div th:if="${message2}" class="alert alert-danger text-center">[[${message2}]]</div>
+  <div>
+    <table class="table table-bordered" style="width:50%;margin-left:auto;margin-right:auto;">
+      <thead class="table-dark">
+      <tr>
+        <th>Bill No.</th>
+        <th>Units Consumed</th>
+        <th>Bill Date</th>
+        <th>Bill Amount</th>
+        <th>Paid</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="Bill : ${billList}">
+        <tr>
+          <td>[[${Bill.billNo}]]</td>
+          <td>[[${Bill.unitsConsumed}]]</td>
+          <td>[[${Bill.billDate}]]</td>
+          <td>[[${Bill.billAmount}]]</td>
+          <td>[[${Bill.paid}]]</td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/bill/pay/' + ${Bill.billNo}}">Pay</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+  <div class="m-2"><a class="h3" th:href="@{'/customer/portal/' + ${id}}">Back to Portal</a></div>
+</div>
+</body>
+</html>
